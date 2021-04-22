@@ -10,7 +10,9 @@ We did some changes to make it easier to run **service-jee-jaxrs** and **app-jee
 
 The quickstarts demonstrate securing TWO applications with <span>Keycloak</span>. 
 
-Below you can find the topology of this project and see how we pretend to use these applications using keycloak to protect them;
+Below you can see the topology of this project and check how we protect those applications using keycloak;
+
+![](docs/keycloak-demo.png)
 
 
 
