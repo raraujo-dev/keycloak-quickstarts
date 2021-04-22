@@ -15,5 +15,19 @@ Below you can see the topology of this project and check how we protect those ap
 ![](docs/keycloak-demo.png)
 
 
+0. [Deploying service-jee-jaxrs application on Openshift](#testdrive-step-0)
+
+
+### Deploying service-jee-jaxrs application on Openshift <a name="testdrive-step-0"></a>
+
+The **service-jee-jaxrs** application runs on top of Red Hat JBoss EAP Server 7.0 or Wilfdly 10. The service-jee-jaxrs application requires the keycloak adapter installed into the JBoss or Widlfly Server as described here: https://github.com/keycloak/keycloak-quickstarts/blob/latest/docs/getting-started.md#wildfly.
+
+Inside the **sso-eap7-bin-demo/configuration/** directory we have the **standalone-openshift.xml** file that is basically the standalone.xml file with the keycloak adapter module configuration (I've added the module into my JBoss Application Server running locally).
+
+The **sso-eap7-bin-demo/modules/** directory we have the modules that will be loaded by our JBoss / Wildfly Application Server runing on Openshift later;
+
+
+
+
 
 
