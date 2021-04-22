@@ -1,4 +1,4 @@
-## This repository is a fork from - https://github.com/raraujo-dev/keycloak-quickstarts;
+## This repository is a fork from - https://github.com/keycloak/keycloak-quickstarts;
 
 We did some changes to make it easier to run **service-jee-jaxrs** and **app-jee-html5** applications on **Openshift** without needing to spend much time configuring Keycloak adapter on Wildfly / JBoss application server;
 
