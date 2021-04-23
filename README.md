@@ -217,4 +217,8 @@ $ oc expose service rh-sso-applications
 route.route.openshift.io/rh-sso-applications exposed
 ``` 
 
-
+```bash
+$ oc get routes
+NAME                  HOST/PORT                                                                              PATH      SERVICES              PORT       TERMINATION   WILDCARD
+rh-sso-applications   rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com             rh-sso-applications   8080-tcp                 None
+``` 
