@@ -46,7 +46,7 @@ Finally you need to configure the adapter, this is done by retrieving the adapte
 1. Click on Installation in the tab for the client you created
 2. Select Keycloak OIDC JSON
 3. Click Download
-4. Move the file keycloak.json to the config/ directory in the root of the quickstart
+4. Move the file **keycloak.json** to the **service-jee-jaxrs/config/** directory in the root of the quickstart
 
 You may also want to enable CORS for the service if you want to allow invocations from HTML5 applications deployed to a different host. To do this edit keycloak.json and add:
 
@@ -61,11 +61,18 @@ You may also want to enable CORS for the service if you want to allow invocation
 
 ### Deploying service-jee-jaxrs application on Openshift <a name="testdrive-step-1"></a>
 
-The **service-jee-jaxrs** application runs on top of Red Hat JBoss EAP Server 7.0 or Wilfdly 10. The service-jee-jaxrs application requires the keycloak adapter installed into the JBoss or Widlfly Server as described here: https://github.com/keycloak/keycloak-quickstarts/blob/latest/docs/getting-started.md#wildfly.
+The **service-jee-jaxrs** application runs on top of Red Hat JBoss EAP Server 7.0 or Wilfdly 10. The service-jee-jaxrs application requires a keycloak adapter installed into the JBoss or Widlfly Server as described here: https://github.com/keycloak/keycloak-quickstarts/blob/latest/docs/getting-started.md#wildfly, otherwise we can get the error below during the deployment proccess:
 
-Inside the **sso-eap7-bin-demo/configuration/** directory we have the **standalone-openshift.xml** file that is basically the standalone.xml file with the keycloak adapter module configuration (I've added the module into my JBoss Application Server running locally).
+```bash
+Caused by: java.lang.RuntimeException: UT010039: Unknown authentication mechanism KEYCLOAK
+```   
 
-The **sso-eap7-bin-demo/modules/** directory we have the modules that will be loaded by our JBoss / Wildfly Application Server runing on Openshift later;
+Inside the **sso-eap7-bin-demo/configuration/** directory we have the **standalone-openshift.xml** file that is basically a standalone.xml file with the keycloak adapter module configuration (I've added the module into my JBoss Application Server running locally and copied the file).
+
+The **sso-eap7-bin-demo/modules/** directory has the modules that will be loaded by our JBoss / Wildfly Application Server running on Openshift later.
+
+Now let's compile t
+
 
 
 
