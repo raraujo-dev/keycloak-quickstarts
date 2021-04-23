@@ -222,3 +222,16 @@ $ oc get routes
 NAME                  HOST/PORT                                                                              PATH      SERVICES              PORT       TERMINATION   WILDCARD
 rh-sso-applications   rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com             rh-sso-applications   8080-tcp                 None
 ``` 
+
+7. Change the following parameters in the app-html5 client on your Keycloak admin console accorgingly to the app-html5 Openshift route we created one step ago:
+
+
+* Root URL = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com
+* Valid Redirect URIs = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/*
+* Admin URL = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5
+* Web Origins = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com:8080
+
+
+8. Access the app-html5 application on your browser:
+
+http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/
