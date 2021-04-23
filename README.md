@@ -25,6 +25,7 @@ Below you can see the topology of this project and check how we protect those ap
 1. [Generating the service-jee-jaxrs packge application](#testdrive-step-1)
 2. [Configuring keycloack client for the app-jee-html5 application (Red Hat Single Sign-On)](#testdrive-step-0)
 3. [Generating the app-jee-html5 package application](#testdrive-step-2)
+4. [Deploying the service-jee-jaxrs and app-jee-html5 applications on Openshift](#testdrive-step-3)
 
 
 ### Configuring keycloack client for the service-jee-jaxrs application <a name="testdrive-step-0"></a>
@@ -106,9 +107,75 @@ The maven command above will generate the **service.war** package inside the **t
 
 ### Configuring keycloack client for the app-jee-html5 application (Red Hat Single Sign-On)<a name="testdrive-step-2"></a>
 
+Prior to running the quickstart you need to create a client in Keycloak and download the installation file.
 
+The following steps show how to create the client required for this quickstart:
+
+1. Open the Keycloak admin console
+2. Select Clients from the menu
+3. Click Create
+4. Add the following values:
+5. Client ID: You choose (for example app-html5)
+6. Client Protocol: openid-connect
+Root URL: URL to the application (for example http://localhost:8080/app-html5) - **Later You'll need to change that URL pointing to the Openshift route of the app-jee-html5 application.**
+
+7. Click Save
+
+If you deploy the application somewhere else change the hostname and port of the URLs accordingly.
+
+Once saved you need to change the Access Type to public and click save.
+
+Finally you need to configure the javascript adapter, this is done by retrieving the adapter configuration file:
+
+1. Click on Installation in the tab for the client you created
+2. Select Keycloak OIDC JSON
+3. Click Download
+4. Move the file keycloak.json to the **app-jee-html5/config/** directory in the root of the quickstart
 
 ### Generating the app-jee-html5 package application <a name="testdrive-step-3"></a>
+
+Let's generate the package of our **app-jee-html5** application.
+
+Go to the **app-jee-html5** directory and run the following maven command:
+
+```bash
+mvn clean package -DskipTests
+```   
+You'll need to get the **BUILD SUCCESS** message as follows:
+
+```bash
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-war-plugin:2.6:war (default-war) @ keycloak-app-jee-html5 ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [keycloak-app-jee-html5] in [/home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5/target/app-html5]
+[INFO] Processing war project
+[INFO] Copying webapp webResources [/home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5/config] to [/home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5/target/app-html5]
+[INFO] Copying webapp resources [/home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5/src/main/webapp]
+[INFO] Webapp assembled in [26 msecs]
+[INFO] Building war: /home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5/target/app-html5.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 8.091 s
+[INFO] Finished at: 2021-04-23T12:46:57-03:00
+[INFO] ------------------------------------------------------------------------
+```  
+The maven command above will generate the **app-html5.war** package inside the **target** directory.
+
+### Deploying the service-jee-jaxrs and app-jee-html5 appplications on Openshift <a name="testdrive-step-4"></a>
+
+**Requirements:** We will assume that you already has logged in on your Openchift cluster and has already created a project to deploy the applications;
+
+We will need to import the JBoss EAP 7.0 image into our Openshift cluster. You also can use a Wildfly 10 image if you want.
+
+To import the JBoss EAP 7.0 image on your Openshift cluster, run the following command;
+
+```bash
+oc import-image jboss-eap-7/eap70-openshift --from=registry.access.redhat.com/jboss-eap-7/eap70-openshift --confirm
+```  
+
+Now go to the **sso-eap7-bin-demo/** directory, you'll see the following directories: deployments, configuration and modules;
 
 
 
