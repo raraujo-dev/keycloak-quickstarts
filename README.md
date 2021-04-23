@@ -167,17 +167,30 @@ The maven command above will generate the **app-html5.war** package inside the *
 
 **Requirements:** We will assume that you already has logged in on your Openchift cluster and has already created a project to deploy the applications;
 
-We will need to import the JBoss EAP 7.0 image into our Openshift cluster. You also can use a Wildfly 10 image if you want.
+Run the following commands:
 
-To import the JBoss EAP 7.0 image on your Openshift cluster, run the following command;
+1. Import the JBoss EAP 7.0 Openshift image:
 
 ```bash
 oc import-image jboss-eap-7/eap70-openshift --from=registry.access.redhat.com/jboss-eap-7/eap70-openshift --confirm
-```  
+``` 
 
-Now go to the **sso-eap7-bin-demo/** directory, you'll see the following directories: deployments, configuration and modules;
+2. Create a new build config on Openshift pointing to the Fuse Image
 
+```bash
+oc new-build --binary=true --image-stream=eap70-openshift --name=rh-sso-applications
+``` 
 
+3. Start the build pointing the '--from-dir' variable to the **sso-eap7-bin-demo/** directory
+
+```bash
+oc start-build rh-sso-applications --from-dir=./sso-eap7-bin-demo/ --follow
+``` 
+4. Create a new app:
+
+```bash
+oc new-app rh-sso-applications
+``` 
 
 
 
