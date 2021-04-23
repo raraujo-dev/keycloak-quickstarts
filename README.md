@@ -167,30 +167,40 @@ The maven command above will generate the **app-html5.war** package inside the *
 
 **Requirements:** We will assume that you already has logged in on your Openchift cluster and has already created a project to deploy the applications;
 
-Run the following commands:
+1. Copy the service.war and the app-html5.war file into the sso-eap7-bin-demo/deployments/ directory:
 
-1. Import the JBoss EAP 7.0 Openshift image:
+
+
+```bash
+$ cp -R service-jee-jaxrs/target/service.war sso-eap7-bin-demo/deployments/
+
+$ cp -R app-jee-html5/target/app-html5.war sso-eap7-bin-demo/deployments/
+```
+
+2. Import the JBoss EAP 7.0 Openshift image:
 
 ```bash
 oc import-image jboss-eap-7/eap70-openshift --from=registry.access.redhat.com/jboss-eap-7/eap70-openshift --confirm
 ``` 
 
-2. Create a new build config on Openshift pointing to the Fuse Image
+3. Create a new build config on Openshift pointing to the Fuse Image
 
 ```bash
 oc new-build --binary=true --image-stream=eap70-openshift --name=rh-sso-applications
 ``` 
 
-3. Start the build pointing the '--from-dir' variable to the **sso-eap7-bin-demo/** directory
+4. Start the build pointing the '--from-dir' variable to the **sso-eap7-bin-demo/** directory
 
 ```bash
 oc start-build rh-sso-applications --from-dir=./sso-eap7-bin-demo/ --follow
 ``` 
-4. Create a new app:
+**During the build process the directory "sso-eap7-bin-demo" will be uploaded into the EAP 7.0 image, replacing the modules and standalone.xml default configuration as well as deploying the service-jee-jaxrs and app-jee-html5 applications into the JBoss 7.0 instance.**
+
+5. Create a new app:
 
 ```bash
 oc new-app rh-sso-applications
 ``` 
 
-
+**Openshift will create all the objects to run the applications**
 
