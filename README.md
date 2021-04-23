@@ -202,5 +202,19 @@ oc start-build rh-sso-applications --from-dir=./sso-eap7-bin-demo/ --follow
 oc new-app rh-sso-applications
 ``` 
 
-**Openshift will create all the objects to run the applications**
+**The source to image (S2I) process will create all the objects to run the applications**
+
+6. Expose the application
+
+```bash
+$ oc get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+rh-sso-applications   ClusterIP   172.30.65.50   <none>        8080/TCP,8443/TCP,8778/TCP   2m59s
+``` 
+
+```bash
+$ oc expose service rh-sso-applications
+route.route.openshift.io/rh-sso-applications exposed
+``` 
+
 
