@@ -235,3 +235,10 @@ rh-sso-applications   rh-sso-applications-rh-sso-applications.apps.cluster-150d.
 8. Access the app-html5 application on your browser:
 
 http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/
+
+
+9 - try to create a login
+
+10 - change the app.js file inside the app-jee-html5 pointing to the service
+
+
