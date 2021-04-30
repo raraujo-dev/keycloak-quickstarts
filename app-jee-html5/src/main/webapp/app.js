@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 var keycloak = new Keycloak();
-var serviceUrl = 'http://127.0.0.1:8080/service'
+var serviceUrl = 'http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/service'
 
 function notAuthenticated() {
     document.getElementById('not-authenticated').style.display = 'block';
