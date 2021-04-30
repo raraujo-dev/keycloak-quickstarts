@@ -295,27 +295,22 @@ Push successful
 
 http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/
 
+**Make some tests**
+
+There are 3 endpoints exposed by the service-jee-jaxrs application. You will need to create keycloak user and assign to them the roles below:
+
+public - requires no authentication
+secured - can be invoked by users with the user role
+admin - can be invoked by users with the admin role
 
 
+Chalanges:
 
-- Habilitar Cadastro do Usuário no realm
-
-- Habilitar Consent Required no client 
-
-- Tentar logar com usuário
+- Try to enable User Registration - https://www.keycloak.org/docs/latest/server_admin/index.html#_user-registration
 
 
-- Criar um usuário no cadastro com rodrigues552 - mostrar consent required
+- Enable Consent Required in the client configuration: https://www.keycloak.org/docs/latest/server_admin/index.html#_clients
 
 
-- Fazer um teste com o postman mostrando os dois user claro --- e o teste mostrando o jwt.io as roles;
-
-
-- social login
-
-configurar oidp provider 
-
-client ID - 866580730205-6c2ea3o6liqi9j9e7613ug4c4os280qs.apps.googleusercontent.com
-
-client secret - ebhPLYRr1HsmvdwEeRNz_eJ-
+- Enable a social login: http://www.mastertheboss.com/jboss-frameworks/keycloak/google-social-login-with-keycloak
 
