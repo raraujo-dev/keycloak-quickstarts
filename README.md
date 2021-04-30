@@ -23,10 +23,10 @@ Below you can see the topology of this project and check how we protect those ap
 
 0. [Configuring keycloack client for the service-jee-jaxrs application (Red Hat Single Sign-On)](#testdrive-step-0)
 1. [Generating the service-jee-jaxrs packge application](#testdrive-step-1)
-2. [Configuring keycloack client for the app-jee-html5 application (Red Hat Single Sign-On)](#testdrive-step-0)
-3. [Generating the app-jee-html5 package application](#testdrive-step-2)
-4. [Deploying the service-jee-jaxrs and app-jee-html5 applications on Openshift](#testdrive-step-3)
-5. [Challenges](#testdrive-step-4)
+2. [Configuring keycloack client for the app-jee-html5 application (Red Hat Single Sign-On)](#testdrive-step-2)
+3. [Generating the app-jee-html5 package application](#testdrive-step-3)
+4. [Deploying the service-jee-jaxrs and app-jee-html5 applications on Openshift](#testdrive-step-4)
+5. [Challenges](#testdrive-step-5)
 
 
 ### Configuring keycloack client for the service-jee-jaxrs application <a name="testdrive-step-0"></a>
@@ -305,7 +305,7 @@ secured - can be invoked by users with the user role
 admin - can be invoked by users with the admin role
 
 
-### Challenges <a name="testdrive-step-4"></a>:
+### Challenges <a name="testdrive-step-5"></a>:
 
 - Try to enable User Registration - https://www.keycloak.org/docs/latest/server_admin/index.html#_user-registration
 
