@@ -304,7 +304,7 @@ secured - can be invoked by users with the user role
 admin - can be invoked by users with the admin role
 
 
-Chalanges:
+Chalenges:
 
 - Try to enable User Registration - https://www.keycloak.org/docs/latest/server_admin/index.html#_user-registration
 
