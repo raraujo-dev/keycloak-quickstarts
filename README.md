@@ -223,7 +223,7 @@ NAME                  HOST/PORT                                                 
 rh-sso-applications   rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com             rh-sso-applications   8080-tcp                 None
 ``` 
 
-7. Change the following parameters in the app-html5 client on your Keycloak admin console accorgingly to the app-html5 Openshift route we created one step ago:
+7. Change the following parameters in the **app-html5** client on your Keycloak admin console accorgingly to the app-html5 Openshift route we created one step ago:
 
 
 * Root URL = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com
@@ -232,13 +232,31 @@ rh-sso-applications   rh-sso-applications-rh-sso-applications.apps.cluster-150d.
 * Web Origins = http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com:8080
 
 
-8. Access the app-html5 application on your browser:
+Until here, we have deployed the the service-jee-jaxrs and app-jee-html5 applications. 
+Now you can call those two applications as follows:
+
+**app-jee-html5**
+
+![](docs/app-html5.png)
+
+**service-jee-jaxrs**
+
+
+
+
+8. - Change the app.js file inside the app-jee-html5 pointing to the service
+
+
+
+
+
+
+
+9. Access the app-html5 application on your browser
 
 http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/
 
+10 - try to create a login
 
-9 - try to create a login
-
-10 - change the app.js file inside the app-jee-html5 pointing to the service
 
 
