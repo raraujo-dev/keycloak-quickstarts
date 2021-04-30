@@ -167,8 +167,7 @@ The maven command above will generate the **app-html5.war** package inside the *
 
 **Requirements:** We will assume that you already has logged in on your Openchift cluster and has already created a project to deploy the applications;
 
-1. Copy the service.war and the app-html5.war file into the sso-eap7-bin-demo/deployments/ directory:
-
+1. Copy the service.war and the app-html5.war file into the **sso-eap7-bin-demo/deployments/** directory:
 
 
 ```bash
@@ -243,20 +242,80 @@ Now you can call those two applications as follows:
 
 
 
+```bash
+$ curl http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/service/secured
+<html><head><title>Error</title></head><body>Unauthorized</body></html>
 
-8. - Change the app.js file inside the app-jee-html5 pointing to the service
+curl http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/service/public
+{"message":"public"}
 
 
+$ curl http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/service/admin
+<html><head><title>Error</title></head><body>Unauthorized</body></html>
+
+``` 
 
 
+8. - Change the **app.js** file inside the **app-jee-html5/src/main/webapp/** directory pointing the **var serviceUrl** variable to the **service-jee-jaxrs** route application as follows:
+
+```bash
+var serviceUrl = 'http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/service'
+```
+
+9. Redeploy the **app-jee-html5** application:
 
 
+```bash
 
-9. Access the app-html5 application on your browser
+$ pwd
+/home/raraujo/rh-sso-quickstart/keycloak-quickstarts/app-jee-html5
+
+$ mvn clean package -DskipTests
+
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 15.338 s
+[INFO] Finished at: 2021-04-30T13:34:06-03:00
+[INFO] ------------------------------------------------------------------------
+
+
+$ cp -R target/app-html5.war ../sso-eap7-bin-demo/deployments/
+
+
+$ cd ../sso-eap7-bin-demo/
+
+$ oc start-build rh-sso-applications --from-dir=. --follow
+
+
+Successfully pushed image-registry.openshift-image-registry.svc:5000/rh-sso-applications/rh-sso-applications@sha256:4278632e875e93c3cb9231c47b11055216182972405b2849897f90ba2bbc8efd
+Push successful
+
+```
+10. Open you browser and call the **app-jee-html5** application as the example below:
 
 http://rh-sso-applications-rh-sso-applications.apps.cluster-150d.150d.sandbox47.opentlc.com/app-html5/
 
-10 - try to create a login
 
 
+
+- Habilitar Cadastro do Usuário no realm
+
+- Habilitar Consent Required no client 
+
+- Tentar logar com usuário
+
+
+- Criar um usuário no cadastro com rodrigues552 - mostrar consent required
+
+
+- Fazer um teste com o postman mostrando os dois user claro --- e o teste mostrando o jwt.io as roles;
+
+
+- social login
+
+configurar oidp provider 
+
+client ID - 866580730205-6c2ea3o6liqi9j9e7613ug4c4os280qs.apps.googleusercontent.com
+
+client secret - ebhPLYRr1HsmvdwEeRNz_eJ-
 
